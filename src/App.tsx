@@ -1,9 +1,6 @@
 import { useState } from 'react';
+import * as WeatherIcons from 'weather-icons-react';
 import './App.css';
-import {
-  api5DaysResponseWeather,
-  apiDetailedWeatherData,
-} from './shared/types/api-response.types.ts';
 import {
   empty5DaysWeatherData,
   emptyDetailedWeatherData,
@@ -11,9 +8,9 @@ import {
   fakeDetailedWeatherData,
 } from './shared/consts/api-response.ts';
 import ErrorBoundary from './features/error-boundary';
-import { get5DaysWeather, getDetailedWeather } from './services/weather-api.ts';
-import { useWeather5Days } from './stores/weather-5-days.ts';
-import { useWeatherDetailed } from './stores/weather-detailed.ts';
+import { useWeather5Days } from './assets/stores/weather-5-days.ts';
+import { useWeatherDetailed } from './assets/stores/weather-detailed.ts';
+import { AppRoutes } from './assets/routing';
 
 function App() {
   const data5Days = useWeather5Days((state) => state.data5Days);
@@ -24,72 +21,60 @@ function App() {
     (state) => state.setDetailedWeather
   );
 
-  const get5DaysWeatherZ = useWeather5Days((state) => state.get5DaysWeather);
+  const get5DaysWeather = useWeather5Days((state) => state.get5DaysWeather);
+  const getDetailedWeather = useWeatherDetailed(
+    (state) => state.getDetailedWeather
+  );
+
+  const set5DaysFakeWeather = useWeather5Days(
+    (state) => state.set5DaysFakeWeather
+  );
+  const setDetailedFakeWeather = useWeatherDetailed(
+    (state) => state.setDetailedFakeWeather
+  );
+
+  const error5Days = useWeather5Days((state) => state.error);
+  const errorDetailed = useWeatherDetailed((state) => state.error);
 
   const [cityName, setCityName] = useState<string>('');
-
-  const [isError, setIsError] = useState<boolean>(false);
-  const [error, setError] = useState<string>('');
-
-  const appKey = import.meta.env.API_KEY;
-  console.log(appKey);
 
   return (
     <ErrorBoundary>
       <>
-        {isError && <p>{error}</p>}
-        {!isError && <p>{data5Days.city.name}</p>}
-        {!isError && <p>{dataDetailed.name}</p>}
-        <input
-          value={cityName}
-          onChange={(e) => {
-            setCityName(e.target.value);
+        {error5Days && <p>{error5Days}</p>}
+        {errorDetailed && <p>{errorDetailed}</p>}
+        {!error5Days && <p>{data5Days.city.name}</p>}
+        {!errorDetailed && <p>{dataDetailed.name}</p>}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
           }}
-        />
-        <div className="card">
-          <button
-            onClick={() => {
-              setData5Days(empty5DaysWeatherData);
-              setDataDetailed(emptyDetailedWeatherData);
-
-              get5DaysWeatherZ(cityName);
-
-              // get5DaysWeather(cityName)
-              //   .then((data) => {
-              //     setError('');
-              //     setIsError(false);
-              //     setData5Days(data);
-              //   })
-              //   .catch((err) => {
-              //     setError(err);
-              //     setIsError(true);
-              //   });
-
-              getDetailedWeather(cityName)
-                .then((data) => {
-                  setError('');
-                  setIsError(false);
-                  setDataDetailed(data);
-                })
-                .catch((err) => {
-                  setError(err);
-                  setIsError(true);
-                });
-
-              // setTimeout(() => {
-              //   console.log(cityName);
-              //   setData5Days(getFake5DaysWeather());
-              // }, 1000);
-
-              // setTimeout(() => {
-              //   console.log(cityName);
-              //   setDataDetailed(getFakeDetailedWeather());
-              // }, 1000);
+        >
+          <input
+            value={cityName}
+            onChange={(e) => {
+              setCityName(e.target.value);
             }}
-          >
-            Get city Weather
-          </button>
-        </div>
+          />
+          <div className="card">
+            <button
+              onClick={() => {
+                setData5Days(empty5DaysWeatherData);
+                setDataDetailed(emptyDetailedWeatherData);
+
+                // get5DaysWeather(cityName);
+                // getDetailedWeather(cityName);
+
+                set5DaysFakeWeather();
+                setDetailedFakeWeather();
+              }}
+            >
+              Get city Weather
+            </button>
+          </div>
+        </form>
+        <AppRoutes />
+        {/*<WeatherIcons.WiDayThunderstorm size={48} color="#" />*/}
       </>
     </ErrorBoundary>
   );

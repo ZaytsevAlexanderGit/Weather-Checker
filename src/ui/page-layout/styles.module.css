@@ -1,0 +1,49 @@
+.main {
+    display: grid;
+    grid-template-columns: 295px minmax(300px, 1fr);
+    gap: 10px 20px;
+    align-content: start;
+    max-width: 1256px;
+    margin: 0 auto;
+}
+
+.content {
+    position: relative;
+    height: 100%;
+}
+
+.mainWithMessage {
+    grid-template: auto 1fr / 295px minmax(300px, 1fr);
+}
+
+.mainWithMessage .side {
+    grid-row: 1 / 3;
+}
+
+.side {
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none;
+}
+
+.content {
+    width: 100%;
+}
+
+@media all and (max-width: 920px) {
+    .main {
+        gap: 10px;
+        grid-template-columns: minmax(300px, 1fr);
+    }
+
+    .user {
+        width: 354px;
+    }
+
+    .side {
+        align-items: center;
+    }
+}

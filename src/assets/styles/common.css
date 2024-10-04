@@ -1,0 +1,195 @@
+:root {
+    --breakpoints-xxxs: 360px;
+    --breakpoints-xxs: 415px;
+    --breakpoints-xs: 550px;
+    --breakpoints-sm: 735px;
+    --breakpoints-md: 920px;
+    --breakpoints-lg: 1150px;
+    --breakpoints-xl: 1300px;
+    --breakpoints-xxl: 1440px;
+
+    --font-family-golos: 'Golos', sans-serif;
+    --font-family-inter: 'Inter', sans-serif;
+
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+
+    --font-size-l: 64px;
+    --font-size-m: 46px;
+    --font-size-small: 12px;
+    --font-size-middle: 14px;
+    --font-size-s: 16px;
+    --font-size-medium: 24px;
+
+    --line-height-s: 36px;
+    --line-height-xs: 14px;
+    --line-height-small: 16.8px;
+    --line-height-middle: 18px;
+    --line-height-medium: 22.4px;
+    --line-height-large: 29px;
+
+    --colors-interface-white: #ffffff;
+    --colors-interface-black: #000000;
+    --colors-interface-primary: #2e3192;
+    --colors-interface-primary-additional: #9798c9;
+    --colors-interface-background: #fbfdff;
+    --colors-interface-line: linear-gradient(
+            90deg,
+            #ffffff 10%,
+            #2e3192,
+            #ffffff 90%
+    );
+    --colors-interface-additional: #818c99;
+    --colors-interface-yorkshire-cloud: #b8c1cc;
+    --colors-interface-blue-very-soft: #b8e4fa;
+    --colors-interface-blue-soft: #addef9;
+    --colors-interface-blue-navy: #0091c7;
+    --colors-interface-blue-strong: #0071bc;
+    --colors-interface-yellow: #acca3e;
+    --colors-interface-cyan: #00a99d;
+    --colors-interface-green: #009245;
+    --colors-interface-orange: #f37920;
+    --colors-interface-orange-bright: #fbb03b;
+    --colors-interface-orange-dark: #f37920;
+    --colors-interface-orange-soft: #f9bc90;
+    --colors-interface-red: #ff0000;
+    --colors-interface-pink: #c9006d;
+    --colors-interface-fuchsia: #d60080;
+    --colors-interface-pink-soft: #e163b3;
+    --colors-interface-red-soft: #fd6868;
+    --colors-interface-ford-white: #e0e0e0;
+    --colors-interface-dark-gray: #2c2d2e;
+    --color-interface-turquoise: #acdfdb;
+    --color-interface-orange-very-soft: #f7e4d7;
+
+    --transition-hover: all 100ms ease-out;
+    --common-element-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1),
+    0 10px 20px -5px rgba(0, 0, 0, 0.4);
+    /*переменные для шрифтов */
+    --font-golos-large: var(--font-weight-regular) var(--font-size-l) /
+    var(--line-height-large) var(--font-family-golos);
+    --font-golos-medium: var(--font-weight-regular) var(--font-size-m) /
+    var(--line-height-medium) var(--font-family-golos);
+    --font-inter-large: var(--font-weight-bold) var(--font-size-l) /
+    var(--line-height-large) var(--font-family-inter);
+    --font-inter-medium: var(--font-weight-bold) var(--font-size-m) /
+    var(--line-height-medium) var(--font-family-inter);
+    --font-inter-small: var(--font-weight-bold) var(--font-size-small) /
+    var(--line-height-small) var(--font-family-inter);
+
+    --font-golos-12-14: var(--font-weight-regular) var(--font-size-small) /
+    var(--line-height-xs) var(--font-family-golos);
+    --font-golos-12-16: var(--font-weight-regular) var(--font-size-small) /
+    var(--line-height-small) var(--font-family-golos);
+    --font-golos-14-16: var(--font-weight-regular) var(--font-size-middle) /
+    var(--line-height-small) var(--font-family-golos);
+    --font-golos-16-22: var(--font-weight-regular) var(--font-size-s) /
+    var(--line-height-medium) var(--font-family-golos);
+    --font-golos-24-28: var(--font-weight-regular) var(--font-size-medium) /
+    var(--line-height-large) var(--font-family-golos);
+}
+
+body {
+    overflow-x: hidden;
+}
+
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+#root {
+    max-width: 1440px;
+    height: 100vh;
+    min-height: 1024px;
+    padding: 0;
+    margin: 0 auto;
+    position: relative;
+}
+
+@media screen and (max-width: 920px) {
+    #root {
+        min-height: auto;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.border {
+    border-width: 2px;
+    border-style: solid;
+}
+
+.text {
+    font-family: var(--font-family-golos);
+}
+
+.text-inter {
+    font-family: var(--font-family-inter);
+}
+
+.text_size_small {
+    font-size: 12px;
+    line-height: 16.8px;
+}
+
+.text_size_middle {
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.text_size_medium {
+    font-size: 14px;
+    line-height: 22.4px;
+}
+
+.text_size_large {
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.text_type_regular {
+    font-weight: var(--font-weight-regular);
+}
+
+.text_type_bold {
+    font-weight: var(--font-weight-bold);
+}
+
+.m-0 {
+    margin: 0;
+}
+
+.p-0 {
+    padding: 0;
+}
+
+.list {
+    list-style: none;
+    list-style-type: none;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}

@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import { useWeather5Days } from '../../assets/stores/weather-5-days.ts';
+import { useWeatherDetailed } from '../../assets/stores/weather-detailed.ts';
 // import { useAppDispatch, useAppSelector } from 'app/hooks';
 // import { enableError } from 'entities/error/model';
 
@@ -7,14 +9,14 @@ type ErrorBoundaryProps = {
 };
 
 const ErrorBoundary = ({ children }: ErrorBoundaryProps) => {
-  // const errorText = useAppSelector((state) => state.user.error!);
-  // const dispatch = useAppDispatch();
+  const error5Days = useWeather5Days((state) => state.error);
+  const errorDetailed = useWeatherDetailed((state) => state.error);
   useEffect(() => {
-    // if (errorText != null) {
-    //   dispatch(enableError(errorText));
-    // }
-    // }, [errorText]);
-  }, []);
+    if (error5Days || errorDetailed != null) {
+      console.log('ERROR');
+      // useWeather5Days(enableError(errorText));
+    }
+  }, [errorDetailed, error5Days]);
 
   return <>{children}</>;
 };
