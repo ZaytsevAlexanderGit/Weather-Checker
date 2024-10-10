@@ -99,8 +99,8 @@ export type apiDetailedWeatherData = {
   dt: number;
   pop?: number;
   sys?: {
-    type: number;
-    id: number;
+    type?: number;
+    id?: number;
     country: string;
     sunrise: number;
     sunset: number;
@@ -109,4 +109,25 @@ export type apiDetailedWeatherData = {
   id: number;
   name: string;
   cod: number;
+};
+
+export type TWeatherCard = {
+  date: string;
+  weather: [
+    {
+      description: string;
+      icon: string;
+    },
+  ];
+  wind?: {
+    speed: number;
+    deg: number;
+  };
+  main: {
+    humidity: number;
+    pressure: number;
+    temp: number;
+    temp_min: number;
+    temp_max: number;
+  };
 };

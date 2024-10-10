@@ -28,7 +28,7 @@
     --line-height-medium: 22.4px;
     --line-height-large: 29px;
 
-    --colors-interface-white: #ffffff;
+    --colors-interface-white: #919191;
     --colors-interface-black: #000000;
     --colors-interface-primary: #2e3192;
     --colors-interface-primary-additional: #9798c9;
@@ -65,6 +65,8 @@
     --transition-hover: all 100ms ease-out;
     --common-element-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1),
     0 10px 20px -5px rgba(0, 0, 0, 0.4);
+
+    --async-paganition-size:60%;
     /*переменные для шрифтов */
     --font-golos-large: var(--font-weight-regular) var(--font-size-l) /
     var(--line-height-large) var(--font-family-golos);
