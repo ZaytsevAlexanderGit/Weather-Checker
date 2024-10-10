@@ -1,9 +1,10 @@
 export const Routes = {
   ROOT: '/',
+  MAP: '/map',
+  CONTACTS: '/contacts-page',
   // PROFILE: '/profile',
   // BLOG: '/blog',
   // POLICY: '/policy',
-  // CONTACTS: '/contacts',
   // PICK: '/pick',
   // REGISTER: '/register',
   // LOGIN: '/login',

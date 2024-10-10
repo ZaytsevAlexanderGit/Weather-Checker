@@ -1,0 +1,9 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    gap:20px
+}
+
+.button__choose {
+    inline-size: clamp(9.375rem, 3.125rem + 20vi, 15.625rem)
+}

@@ -15,7 +15,7 @@ interface IWeather5DaysState {
   get5DaysWeather: (city: string) => void;
 }
 
-const appKey = import.meta.env.VITE_API_KEY;
+const appKey = import.meta.env.VITE_API_WEATHER_KEY;
 
 export const useWeather5Days = create<IWeather5DaysState>()(
   devtools((set) => ({
@@ -25,7 +25,10 @@ export const useWeather5Days = create<IWeather5DaysState>()(
     set5DaysWeather: (data: api5DaysResponseWeather) =>
       set({ data5Days: data }),
     set5DaysFakeWeather: () => {
-      setTimeout(() => set({ data5Days: fake5DaysWeatherData }), 1000);
+      set({ loading: true });
+      set({ data5Days: fake5DaysWeatherData });
+      set({ error: null });
+      setTimeout(() => set({ loading: false }), 1000);
     },
     get5DaysWeather: async (city: string) => {
       set({ loading: true });
@@ -38,11 +41,9 @@ export const useWeather5Days = create<IWeather5DaysState>()(
         const data = await res.json();
 
         if (data.cod.toString() === '404') {
-          console.log(data);
           set({ error: data.message });
         }
         if (data.cod.toString() === '200') {
-          console.log(data);
           set({ data5Days: data });
           set({ error: null });
         }

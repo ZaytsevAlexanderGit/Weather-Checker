@@ -1,0 +1,45 @@
+.header {
+    font-size: clamp(0.938rem, 0.638rem + 0.957vi, 1.5rem)
+}
+
+.card {
+    display:grid;
+    inline-size: 100%;
+}
+
+.card__data {
+    display:grid;
+    grid-template-columns: 35% 20% 45%;
+    justify-content: center;
+    justify-items: center;
+}
+
+.card__data_date {
+    display:grid;
+    align-content: center;
+    justify-items: center;
+}
+
+.card__data_main {
+    display:grid;
+    justify-items: end;
+    align-content: flex-end;
+}
+
+.card__data_main_text {
+    font-size:clamp(0.625rem, 0.459rem + 0.532vi, 0.938rem);
+    text-align: right;
+    white-space: break-spaces;
+}
+
+.image {
+    filter: drop-shadow(0px 0px 25px #A1A5A5) ;
+    align-self: center;
+    inline-size: clamp(2.5rem, 1.835rem + 2.128vi, 3.75rem);
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
