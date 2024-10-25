@@ -1,9 +1,11 @@
 import { AsyncPaginate } from 'react-select-async-paginate';
 import { SetStateAction, useState } from 'react';
 
-import styles from './styles.module.css';
+// import styles from './styles.module.css';
 
 const appKey = import.meta.env.VITE_API_REQUEST_KEY;
+
+// @ts-ignore
 
 export const Search = ({ onSearchChange }) => {
   const [search, setSearch] = useState(null);
@@ -22,6 +24,7 @@ export const Search = ({ onSearchChange }) => {
       .then((response) => response.json())
       .then((response) => {
         return {
+          // @ts-ignore
           options: response.data.map((city) => {
             return {
               value: `${city.latitude} ${city.longitude}`,
@@ -33,6 +36,7 @@ export const Search = ({ onSearchChange }) => {
   };
 
   const handleOnChange = (searchData: SetStateAction<string>) => {
+    // @ts-ignore
     setSearch(searchData);
     onSearchChange(searchData);
   };
@@ -40,6 +44,7 @@ export const Search = ({ onSearchChange }) => {
   return (
     <AsyncPaginate
       styles={{
+        // @ts-ignore
         control: (provided, state) => ({
           ...provided,
           inlineSize: '80%',
@@ -56,6 +61,7 @@ export const Search = ({ onSearchChange }) => {
           inlineSize: '80%',
           marginLeft: '10%',
         }),
+        // @ts-ignore
         option: (provided, state) => ({
           ...provided,
           backgroundColor: state.isFocused ? '#A1A5A5' : null,
@@ -65,6 +71,7 @@ export const Search = ({ onSearchChange }) => {
       placeholder="Search for city"
       debounceTimeout={600}
       value={search}
+      // @ts-ignore
       onChange={handleOnChange}
       loadOptions={loadOptions}
     />

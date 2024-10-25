@@ -1,4 +1,5 @@
-import { createBrowserRouter, createHashRouter } from 'react-router-dom';
+// import { createBrowserRouter } from 'react-router-dom';
+import { createHashRouter } from 'react-router-dom';
 
 import { Routes } from '../../shared/config/router';
 import {
