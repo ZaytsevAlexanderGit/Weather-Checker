@@ -8,7 +8,11 @@ export interface LogoProps {
 
 export const Logo = ({ extClassName }: LogoProps) => (
   <div className={classnames(styles.logo, extClassName)}>
-    <img src="/Header_Clouds.svg" width="45" alt="Логотип проекта" />
+    <img
+      src="public/images/Header_Clouds.svg"
+      width="45"
+      alt="Логотип проекта"
+    />
     <svg
       width="195.344"
       height="39.704"

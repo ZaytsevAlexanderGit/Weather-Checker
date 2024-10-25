@@ -13,6 +13,7 @@ import ClipLoader from 'react-spinners/ClipLoader';
 export function MainPage() {
   const data5Days = useWeather5Days((state) => state.data5Days);
   const dataLoaded = useWeatherDetailed((state) => state.loading);
+  const errorDetailed = useWeatherDetailed((state) => state.error);
 
   const isMobile = useMediaQuery(Breakpoints.L);
   const [isDetailed, setIsDetailed] = useState<boolean>(true);
@@ -52,12 +53,13 @@ export function MainPage() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: !isMobile ? 'repeat(2, 1fr)' : ' 1fr',
+            gridTemplateColumns:
+              !isMobile && !errorDetailed ? 'repeat(2, 1fr)' : ' 1fr',
             gap: !isMobile ? '10px' : '0',
           }}
         >
           <WeatherDetailed />
-          {!isMobile && <MapPage />}
+          {!isMobile && !errorDetailed && <MapPage />}
         </div>
       )}
       {!dataLoaded && !isDetailed && <Weather5Days />}

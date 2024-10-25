@@ -37,7 +37,9 @@ export const WeatherCard = ({ data }: IWeatherCard) => {
           </div>
           <img
             className={styles.image}
-            src={`/icons/${data.weather[0].icon}.svg`}
+            src={`public/images/${data.weather[0].icon}.svg`}
+            // src={`/images/${data.weather[0].icon}.svg`}
+            // src={`/${data.weather[0].icon}.svg`}
           />
           <div className={styles.card__data_main}>
             <p className={styles.card__data_main_text}>

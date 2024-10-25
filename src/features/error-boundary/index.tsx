@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 import { useWeather5Days } from '../../assets/stores/weather-5-days.ts';
 import { useWeatherDetailed } from '../../assets/stores/weather-detailed.ts';
-// import { useAppDispatch, useAppSelector } from 'app/hooks';
-// import { enableError } from 'entities/error/model';
 
 type ErrorBoundaryProps = {
   children: JSX.Element | JSX.Element[];

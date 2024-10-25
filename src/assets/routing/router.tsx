@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, createHashRouter } from 'react-router-dom';
 
 import { Routes } from '../../shared/config/router';
 import {
@@ -9,7 +9,8 @@ import {
   NotFoundPage,
 } from '../../pages';
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
+  // export const router = createBrowserRouter([
   {
     path: Routes.ROOT,
     element: <Layout />,

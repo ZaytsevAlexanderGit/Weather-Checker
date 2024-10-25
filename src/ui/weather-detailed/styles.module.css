@@ -35,7 +35,16 @@
     color:var(--colors-interface-white);
 }
 
+.card__left_small_feel {
+    position:absolute;
+    right:0px;
+    bottom:0px;
+    font-size:0.5rem;
+    color:var(--colors-interface-white);
+}
+
 .card__left_medium {
+    position:relative;
     display:flex;
     font-size: 1rem;
     align-items: center;
