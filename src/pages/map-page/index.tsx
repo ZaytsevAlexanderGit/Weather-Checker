@@ -22,7 +22,6 @@ export function MapPage() {
       )}
       {!data5days.city.name && isMobile && (
         <>
-          ]
           <h1 className="text text_size_large .text_type_bold">
             Сначала выберете город
           </h1>

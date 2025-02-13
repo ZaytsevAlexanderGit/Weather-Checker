@@ -70,9 +70,8 @@ export const WeatherCarousel = ({ data, isOpen }: IWeatherCarouselProps) => {
               </p>
               <img
                 className={styles.image}
-                src={`public/images/${item.weather[0].icon}.svg`}
-                // src={`/images/${item.weather[0].icon}.svg`}
-                // src={`/${item.weather[0].icon}.svg`}
+                src={`./${item.weather[0].icon}.svg`}
+                alt="Погода"
               />
               <p className={styles.carousel__text}>
                 {-(-item.main.temp.toFixed(1))}&nbsp;&deg;C

@@ -34,7 +34,15 @@ export function MainPage() {
         </div>
       )}
       {!dataLoaded && data5Days.city.name && (
-        <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-evenly',
+            gap: '20px',
+            inlineSize: '90%',
+            margin: '0 auto',
+          }}
+        >
           <button
             className={styles.button__choose}
             onClick={() => setIsDetailed(true)}

@@ -2,6 +2,11 @@
     font-size: clamp(0.938rem, 0.638rem + 0.957vi, 1.5rem)
 }
 
+.header__day {
+    padding-top:5px;
+    font-size: clamp(0.8rem, 0.6rem + 0.9vi, 1.35rem)
+}
+
 .card {
     display:grid;
     inline-size: 100%;

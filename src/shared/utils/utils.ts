@@ -81,6 +81,10 @@ export const getWeatherCardsData = (
   return weatherCards;
 };
 
+export const capitalizeFirst = (str: string): string => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
 export const getDirection = (deg: number): string | undefined => {
   if (deg === 0) return 'С';
   if (deg > 0 && deg < 45) return 'CСВ';

@@ -6,7 +6,6 @@ import { SetStateAction, useState } from 'react';
 const appKey = import.meta.env.VITE_API_REQUEST_KEY;
 
 // @ts-ignore
-
 export const Search = ({ onSearchChange }) => {
   const [search, setSearch] = useState(null);
 
@@ -47,7 +46,7 @@ export const Search = ({ onSearchChange }) => {
         // @ts-ignore
         control: (provided, state) => ({
           ...provided,
-          inlineSize: '80%',
+          inlineSize: '90%',
           margin: '0 auto',
           textAlign: 'left',
           borderRadius: '8px',
@@ -58,8 +57,8 @@ export const Search = ({ onSearchChange }) => {
         }),
         menu: (provided) => ({
           ...provided,
-          inlineSize: '80%',
-          marginLeft: '10%',
+          inlineSize: '90%',
+          marginLeft: '5%',
         }),
         // @ts-ignore
         option: (provided, state) => ({

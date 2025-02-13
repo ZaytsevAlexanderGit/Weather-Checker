@@ -34,9 +34,8 @@ export function WeatherDetailed() {
           <div className={styles.card__left}>
             <img
               className={styles.image}
-              src={`public/images/${dataDetailed.weather[0].icon}.svg`}
-              // src={`images/${dataDetailed.weather[0].icon}.svg`}
-              // src={`/${dataDetailed.weather[0].icon}.svg`}
+              src={`./${dataDetailed.weather[0].icon}.svg`}
+              alt="Погода"
             />
             <div className={styles.card__left_temp}>
               <div className={styles.card__left_big}>
