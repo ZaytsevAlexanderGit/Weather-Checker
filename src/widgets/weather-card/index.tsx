@@ -1,5 +1,6 @@
 import { TWeatherCard } from '../../shared/types/api-response.types.ts';
 import styles from '../weather-card/styles.module.css';
+import { capitalizeFirst } from '../../shared/utils/utils.ts';
 
 interface IWeatherCard {
   data: TWeatherCard;
@@ -19,27 +20,33 @@ export const WeatherCard = ({ data }: IWeatherCard) => {
         <div className={styles.card__data}>
           <div className={styles.card__data_date}>
             <h2 className={styles.header}>
-              {
-                new Date(data.date.slice(0, 10))
-                  // @ts-expect-error options
-                  .toLocaleDateString('ru', options)
-                  .split(',')[1]
-              }
+              {new Date(data.date.slice(0, 10))
+                // @ts-expect-error options
+                .toLocaleDateString('ru', options)
+                .split(',')[1]
+                .split(' ')[1] +
+                ' ' +
+                capitalizeFirst(
+                  new Date(data.date.slice(0, 10))
+                    // @ts-expect-error options
+                    .toLocaleDateString('ru', options)
+                    .split(',')[1]
+                    .split(' ')[2]
+                )}
             </h2>
-            <h2 className={styles.header}>
-              {
+            <h2 className={styles.header__day}>
+              {capitalizeFirst(
                 new Date(data.date.slice(0, 10))
                   // @ts-expect-error options
                   .toLocaleDateString('ru', options)
                   .split(',')[0]
-              }
+              )}
             </h2>
           </div>
           <img
             className={styles.image}
-            src={`public/images/${data.weather[0].icon}.svg`}
-            // src={`/images/${data.weather[0].icon}.svg`}
-            // src={`/${data.weather[0].icon}.svg`}
+            src={`./${data.weather[0].icon}.svg`}
+            alt="Погода"
           />
           <div className={styles.card__data_main}>
             <p className={styles.card__data_main_text}>

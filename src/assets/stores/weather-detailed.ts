@@ -43,7 +43,6 @@ export const useWeatherDetailed = create<IWeatherDetailedState>()(
           set({ error: data.message });
         }
         if (data.cod.toString() === '200') {
-          // console.log('detailed - ', data);
           set({ dataDetailed: data });
           set({ error: null });
         }

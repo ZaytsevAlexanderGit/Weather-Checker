@@ -11,7 +11,6 @@ import {
 } from '../../pages';
 
 export const router = createHashRouter([
-  // export const router = createBrowserRouter([
   {
     path: Routes.ROOT,
     element: <Layout />,
