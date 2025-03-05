@@ -14,6 +14,7 @@ Pet-проект. Цель, создать удобное адаптивное �
 - TypeScript
 - React Router
 - Zustand
+- Motion (ex. Framer Motion)
 
 ## Установка
 

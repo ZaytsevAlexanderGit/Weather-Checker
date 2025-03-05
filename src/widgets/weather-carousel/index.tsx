@@ -2,6 +2,8 @@ import { MouseEvent, useRef, useState, WheelEvent } from 'react';
 import styles from '../../widgets/weather-carousel/styles.module.css';
 import { api5DaysResponseWeather } from '../../shared/types/api-response.types.ts';
 
+import { motion, AnimatePresence } from 'motion/react';
+
 interface IWeatherCarouselProps {
   data: api5DaysResponseWeather;
   isOpen: boolean;
@@ -43,18 +45,25 @@ export const WeatherCarousel = ({ data, isOpen }: IWeatherCarouselProps) => {
     setScrollLeft(itemsRef.current!.scrollLeft);
   };
 
+  const listVariants = {
+    visible: {
+      opacity: 1,
+      height: 'clamp(5.25rem, 1.938rem + 7.8vi, 6.813rem)',
+      marginTop: 16,
+    },
+    hidden: { opacity: 0, height: 0, marginTop: 0 },
+  };
+
   return (
-    <>
-      {data.city.name && (
-        <ul
-          style={{
-            opacity: isOpen ? 1 : 0,
-            transition: 'all  0.3s ease-in-out, opacity 0.6s ease-in-out',
-            height: isOpen
-              ? 'clamp(5.25rem, 1.938rem + 7.8vi, 6.813rem)'
-              : '0px',
-            marginTop: isOpen ? '16px' : '0px',
-          }}
+    <AnimatePresence>
+      {data.city.name && isOpen && (
+        <motion.ul
+          layout
+          variants={listVariants}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          transition={{ duration: 0.3 }}
           className={styles.list}
           ref={itemsRef}
           onMouseDown={handleMouseDown}
@@ -78,8 +87,8 @@ export const WeatherCarousel = ({ data, isOpen }: IWeatherCarouselProps) => {
               </p>
             </li>
           ))}
-        </ul>
+        </motion.ul>
       )}
-    </>
+    </AnimatePresence>
   );
 };

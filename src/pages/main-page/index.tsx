@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { useWeather5Days } from '../../assets/stores/weather-5-days.ts';
 import { useWeatherDetailed } from '../../assets/stores/weather-detailed.ts';
 import ClipLoader from 'react-spinners/ClipLoader';
+import { motion } from 'motion/react';
 
 export function MainPage() {
   const data5Days = useWeather5Days((state) => state.data5Days);
@@ -17,6 +18,13 @@ export function MainPage() {
 
   const isMobile = useMediaQuery(Breakpoints.L);
   const [isDetailed, setIsDetailed] = useState<boolean>(true);
+
+  const pageVariants = {
+    visible: {
+      opacity: 1,
+    },
+    hidden: { opacity: 0 },
+  };
 
   return (
     <div className={styles.main}>
@@ -58,7 +66,11 @@ export function MainPage() {
         </div>
       )}
       {!dataLoaded && isDetailed && (
-        <div
+        <motion.div
+          variants={pageVariants}
+          transition={{ duration: 0.5 }}
+          initial="hidden"
+          animate="visible"
           style={{
             display: 'grid',
             gridTemplateColumns:
@@ -68,7 +80,7 @@ export function MainPage() {
         >
           <WeatherDetailed />
           {!isMobile && !errorDetailed && <MapPage />}
-        </div>
+        </motion.div>
       )}
       {!dataLoaded && !isDetailed && <Weather5Days />}
     </div>

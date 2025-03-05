@@ -4,6 +4,7 @@ import styles from '../weather-cards-section/styles.module.css';
 import { useWeather5Days } from '../../assets/stores/weather-5-days.ts';
 import { WeatherCarousel } from '../weather-carousel';
 import { useState } from 'react';
+import { motion } from 'motion/react';
 
 interface IWeatherCardsSection {
   data: TWeatherCard[];
@@ -23,13 +24,27 @@ export const WeatherCardsSection = ({ data }: IWeatherCardsSection) => {
     return test;
   };
 
+  const listVariants = {
+    visible: (i: number) => ({
+      opacity: 1,
+      transition: {
+        delay: 0.1 * i,
+      },
+    }),
+    hidden: { opacity: 0 },
+  };
+
   return (
     <>
       {data[0].date && (
         <ul className={styles.list}>
-          {data.map((card) => (
-            <li
+          {data.map((card, i) => (
+            <motion.li
+              variants={listVariants}
               key={card.date}
+              animate="visible"
+              initial="hidden"
+              custom={i}
               onClick={() => {
                 if (isShow !== card.date) setIsShow(card.date);
                 else setIsShow('');
@@ -41,7 +56,7 @@ export const WeatherCardsSection = ({ data }: IWeatherCardsSection) => {
                 data={getData(card)}
                 isOpen={isShow === card.date}
               />
-            </li>
+            </motion.li>
           ))}
         </ul>
       )}

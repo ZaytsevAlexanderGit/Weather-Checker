@@ -12,7 +12,6 @@ export function Layout() {
       <main className={styles.main}>
         <PageLayout content={<Outlet />} />
       </main>
-      {/*<div className={styles.overlay} />*/}
       <Footer />
     </MainWrapper>
   );
