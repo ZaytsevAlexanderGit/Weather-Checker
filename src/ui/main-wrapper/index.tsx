@@ -21,6 +21,8 @@ export const MainWrapper: FC<MainWrapperProps> = ({
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((pos: GeolocationPosition) => {
       const { latitude, longitude } = pos.coords;
+      console.log(latitude, longitude);
+
       const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
       fetch(url)
         .then((res) => res.json())
