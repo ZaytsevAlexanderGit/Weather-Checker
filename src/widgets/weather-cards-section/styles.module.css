@@ -15,5 +15,11 @@
     inline-size: 90%;
     margin:0 auto;
     border-radius: 8px;
+    cursor: pointer;
     background: #424242;
+    transition: scale 0.25s ease-out;
+}
+
+.listItem:hover {
+    scale:1.025;
 }
