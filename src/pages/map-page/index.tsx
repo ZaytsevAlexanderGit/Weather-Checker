@@ -1,26 +1,26 @@
 // import styles from './styles.module.css';
-import { useWeather5Days } from '../../assets/stores/weather-5-days.ts';
 import { useMediaQuery } from '../../shared/hooks';
 import { Breakpoints } from '../../shared/config';
+import { useWeatherDetailed } from '../../assets/stores/weather-detailed.ts';
 
 export function MapPage() {
-  const data5days = useWeather5Days((state) => state.data5Days);
+  const detailedWeather = useWeatherDetailed((state) => state.dataDetailed);
   let source = '';
   const corner = 0.05;
-  source = `https://www.openstreetmap.org/export/embed.html?bbox=${data5days.city.coord.lon - corner}%2C${data5days.city.coord.lat - corner}%2C${data5days.city.coord.lon + corner}%2C${data5days.city.coord.lat + corner}&layer=mapnik`;
+  source = `https://www.openstreetmap.org/export/embed.html?bbox=${detailedWeather.coord.lon - corner}%2C${detailedWeather.coord.lat - corner}%2C${detailedWeather.coord.lon + corner}%2C${detailedWeather.coord.lat + corner}&layer=mapnik`;
   const isMobile = useMediaQuery(Breakpoints.L);
 
   return (
     <div>
-      {data5days.city.name && (
+      {detailedWeather.name && (
         <>
           <h1 style={{ fontSize: '1.5rem', lineHeight: '1.25' }}>
-            Карта города {data5days.city.name}
+            Карта города {detailedWeather.name}
           </h1>
           <iframe width="100%" height="400" src={source}></iframe>
         </>
       )}
-      {!data5days.city.name && isMobile && (
+      {!detailedWeather.name && isMobile && (
         <>
           <h1 className="text text_size_large .text_type_bold">
             Сначала выберете город
