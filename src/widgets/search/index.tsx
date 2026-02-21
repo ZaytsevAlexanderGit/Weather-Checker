@@ -12,7 +12,7 @@ export const Search = ({ onSearchChange }) => {
   const [search, setSearch] = useState(null);
 
   async function loadOptionsGeoApify(searchQuery: string) {
-    if (!searchQuery) {
+    if (!searchQuery || searchQuery.length < 3) {
       return { options: [], hasMore: false };
     }
 
@@ -36,8 +36,6 @@ export const Search = ({ onSearchChange }) => {
         (item: { value: string; label: string }) =>
           !item.value.includes('undefined') && !item.label.includes('undefined')
       );
-
-    console.log(options);
 
     const uniqueOptions = [
       ...new Map(
@@ -155,6 +153,7 @@ export const Search = ({ onSearchChange }) => {
       placeholder="Search for city"
       debounceTimeout={600}
       value={search}
+      cacheUniqs={[search]}
       // @ts-expect-error not defined
       onChange={handleOnChange}
       // loadOptions={loadOptionsWFT}
